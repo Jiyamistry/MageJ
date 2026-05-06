@@ -1,6 +1,6 @@
 # Mage2 Module: MageJ_BrandCarousel
 
-`MAgeJ/module-brandcarousel`
+`magej/module-brandcarousel`
 
 ---
 
