@@ -44,22 +44,6 @@ Showcase your brand partners professionally and improve customer trust and brand
 
 ## 📦 Installation
 
-> In production please use the `--keep-generated` option.
-
-### Method 1: Composer (Recommended)
-
-```bash
-composer require z/module-brandcarousel
-php bin/magento module:enable MageJ_BrandCarousel
-php bin/magento setup:upgrade
-php bin/magento setup:static-content:deploy -f
-php bin/magento cache:flush
-```
-
----
-
-### Method 2: Manual Installation (Zip)
-
 1. Unzip the extension into:
 
 ```
