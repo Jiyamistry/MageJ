@@ -74,3 +74,8 @@ For any setup help or queries, feel free to contact:
 ```bash
 jiyakmistry@gmail.com
 ```
+
+---
+
+## 📄 License
+This project is licensed under the MIT License.
