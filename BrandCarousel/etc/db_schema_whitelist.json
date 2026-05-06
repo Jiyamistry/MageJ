@@ -1,0 +1,30 @@
+{
+    "MageJ_brand_slider": {
+        "column": {
+            "brand_id": true,
+            "name": true,
+            "sort_order": true,
+            "status": true,
+            "logo": true,
+            "logo_alt": true,
+            "update_time": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "MageJ_brand_store": {
+        "column": {
+            "brand_id": true,
+            "store_id": true
+        },
+        "index": {
+            "MageJ_BRANDSLIDER_BRAND_STORE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MageJ_BS_BRAND_STORE_BRAND_ID_BRAND_BRAND_ID": true,
+            "MageJ_BS_BRAND_STORE_STORE_ID_STORE_STORE_ID": true
+        }
+    }
+}

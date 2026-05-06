@@ -1,0 +1,78 @@
+<?php /* Copyright (c) 2026 Jiya Mistry */ ?>
+
+<style type="text/css">
+    .slick-brand-slider .brand-name {
+        padding: 15px;
+    }
+
+    .slick-brand-slider h3 {
+        font-size: 16px;
+        margin-top: 10px;
+        color: #333;
+    }
+
+    .brand-logo img {
+        display: block;
+        max-width: 100%;
+        height: 60px;
+        border: 0;
+    }
+
+    .slick-brand-slider {
+        margin-bottom: 20px;
+    }
+</style>
+
+<?php if ($block->isEnabled() && $block->canShowSlider()): ?>
+    <?php
+        $heading = $block->getSliderHeading();
+        $arrows = $block->isNavEnabled() ? 'true' : 'false';
+        $dots = $block->isDotsEnabled() ? 'true' : 'false';
+        $show = $block->slideToShow() ?: 3;
+        $scroll = $block->slideToScroll() ?: 1;
+        $autoplay = $block->isAutoplayEnabled() ? 'true' : 'false';
+        $animation = $block->getAnimationType();
+    ?>
+    <center>
+        <h1 class="brand-slider-heading"><?= $block->escapeHtml($heading) ?></h1>
+        <div class="slick-brand-slider">
+            <?php foreach ($block->getBrandCollection() as $brand): ?>
+                <div class="brand-logo">
+                    <img src="<?= $block->getMediaUrl() . 'MageJ/brand/logo/' . $brand->getLogo(); ?>"
+                         alt="<?= $block->escapeHtml($brand->getName()) ?>" />
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </center>
+
+    <script type="text/javascript">
+        require(['jquery', 'slick'], function($){
+            $(document).ready(function(){
+                $('.slick-brand-slider').slick({                                        
+                    slidesToShow: <?= (int) $show ?>,
+                    slidesToScroll: <?= (int) $scroll ?>,
+                    autoplay: <?= $autoplay ?>,
+                    autoplaySpeed: 2000,
+                    arrows: <?= $arrows ?>,
+                    dots: <?= $dots ?>,
+                    fade: <?= $animation === 'fade' ? 'true' : 'false' ?>,
+                    cssEase: 'ease-in-out',
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 2
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+<?php endif; ?>

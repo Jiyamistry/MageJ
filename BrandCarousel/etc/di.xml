@@ -1,0 +1,79 @@
+
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="MageJ\BrandCarousel\Api\Data\BrandInterface"
+                type="MageJ\BrandCarousel\Model\Brand" />
+    <preference for="MageJ\BrandCarousel\Api\BrandRepositoryInterface"
+                type="MageJ\BrandCarousel\Model\BrandRepository" />
+    <preference for="MageJ\BrandCarousel\Api\Data\BrandSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="brandcarousel_brand_listing_data_source" xsi:type="string">
+                    MageJ\BrandCarousel\Model\ResourceModel\Brand\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="MageJ\BrandCarousel\Model\ResourceModel\Brand\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">MageJ_brand_slider</argument>
+            <argument name="eventPrefix" xsi:type="string">brand_brand_collection</argument>
+            <argument name="eventObject" xsi:type="string">brand_collection</argument>
+            <argument name="resourceModel" xsi:type="string">MageJ\BrandCarousel\Model\ResourceModel\Brand</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="MageJ\BrandCarousel\Api\Data\BrandInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">MageJ_brand_slider</item>
+                    <item name="identifierField" xsi:type="string">brand_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="MageJ\BrandCarousel\ImageUploader" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">MageJ/tmp/brand</argument>
+            <argument name="basePath" xsi:type="string">MageJ/brand</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+                <item name="webp" xsi:type="string">webp</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+                <item name="webp" xsi:type="string">image/webp</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="MageJ\BrandCarousel\Model\Brand\DataProvider">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">MageJ\BrandCarousel\ImageUploader</argument>
+        </arguments>
+    </type>
+    <type name="MageJ\BrandCarousel\Ui\Component\DataProvider">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">MageJ\BrandCarousel\ImageUploader</argument>
+        </arguments>
+    </type>
+    <type name="MageJ\BrandCarousel\Model\Brand\Brand">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">MageJ\BrandCarousel\ImageUploader</argument>
+        </arguments>
+    </type>
+    <type name="MageJ\BrandCarousel\Controller\Adminhtml\Index\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">MageJ\BrandCarousel\ImageUploader</argument>
+        </arguments>
+    </type>
+</config>

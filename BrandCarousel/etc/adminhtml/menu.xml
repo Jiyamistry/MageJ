@@ -1,0 +1,23 @@
+
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- Main Menu -->
+        <add id="MageJ_BrandCarousel::main"
+             title="Iflair Brand Slider"
+             module="MageJ_BrandCarousel"
+             sortOrder="90"
+             parent="Magento_Backend::content"
+             resource="MageJ_BrandCarousel::main"/>
+
+        <!-- Sub Menu -->
+        <add id="MageJ_BrandCarousel::brand_brands"
+             title="Brand List"
+             module="MageJ_BrandCarousel"
+             sortOrder="10"
+             parent="MageJ_BrandCarousel::main"
+             action="brandcarousel/index/index"
+             resource="MageJ_BrandCarousel::brand_brands"/>
+    </menu>
+</config>
