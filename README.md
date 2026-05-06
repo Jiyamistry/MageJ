@@ -79,3 +79,8 @@ jiyakmistry@gmail.com
 
 ## 📄 License
 This project is licensed under the MIT License.
+
+---
+
+## ⚠️ Disclaimer
+These modules are provided as-is without any guarantees. Use at your own risk. The author is not responsible for any issues, damages, or data loss caused by the use of this code.
