@@ -1,0 +1,38 @@
+<?php
+$request = $block->getRequest();
+
+// Detect admin login page
+if ($request->getModuleName() === 'admin'
+    && $request->getControllerName() === 'auth'
+    && $request->getActionName() === 'login') {
+    return;
+}
+?>
+
+<div id="ai-chat-toggle">💬</div>
+
+<div id="ai-chat-box">
+    <div id="ai-chat-header"> AI Assistant </div>
+
+    <div id="ai-chat-messages"></div>
+
+    <div id="ai-chat-input-area">
+        <input type="text" id="ai-chat-input" placeholder="Ask something..." />
+        <button id="ai-chat-send">Send</button>
+    </div>
+</div>
+
+<!-- Load CSS -->
+<link rel="stylesheet" type="text/css"
+      href="<?= $block->getViewFileUrl('MageJ_AiAdminAssistant::css/style.css') ?>" />
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "aiAssistantChat": {
+            "processUrl": "<?= $block->getUrl('aiassistant/chat/process') ?>",
+            "historyUrl": "<?= $block->getUrl('aiassistant/chat/history') ?>"
+        }
+    }
+}
+</script>

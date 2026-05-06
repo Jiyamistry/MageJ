@@ -1,0 +1,128 @@
+#ai-chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #eb5202;
+    color: #fff;
+    padding: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 18px;
+}
+
+#ai-chat-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 340px;
+    height: 420px;
+    background: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#ai-chat-box.active {
+    display: flex !important;
+}
+
+#ai-chat-header {
+    background: #007dbd;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* MESSAGES take remaining space */
+#ai-chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* INPUT ALWAYS BOTTOM */
+#ai-chat-input-area {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 5px;
+    background: #fff;
+}
+
+/* input + button styling */
+#ai-chat-input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    outline: none;
+}
+
+#ai-chat-send {
+    padding: 8px 12px;
+    background: #007dbd;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* COMMON MESSAGE STYLE */
+.ai-msg {
+    max-width: 75%;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 10px;
+    word-wrap: break-word;
+    font-size: 13px;
+}
+
+/* USER → RIGHT */
+.user-msg {
+    align-self: flex-end;
+    background: #007dbd;
+    color: #fff;
+}
+
+/* AI → LEFT */
+.ai-response {
+    align-self: flex-start;
+    background: #f1f1f1;
+    color: #333;
+}
+
+.ai-message {
+    background: #eef3ff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin: 8px 0;
+    line-height: 1.6;
+    border-left: 2px solid #007dbd;
+    font-size: 14px;
+}
+
+.ai-message b {
+    color: #000000a8;
+}
+
+.ai-message ul {
+    padding-left: 18px;
+    margin: 5px 0;
+}
+
+.ai-message li {
+    margin-bottom: 6px;
+    word-break: break-word;
+}
+.ai-message ol {
+    padding-left: 22px;
+    margin: 8px 0;
+}
+
+.ai-message ol li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}

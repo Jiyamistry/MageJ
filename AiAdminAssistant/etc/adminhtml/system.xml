@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+
+    <system>
+
+        <!-- CUSTOM TAB -->
+        <tab id="MageJ" translate="label" sortOrder="0">
+            <label>MageJ</label>
+        </tab>
+
+        <!-- SECTION -->
+        <section id="aiassistant" translate="label" sortOrder="10"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            
+            <label>AI Assistant</label>
+            <tab>MageJ</tab>
+
+            <resource>MageJ_AiAdminAssistant::main</resource>
+
+            <!-- GROUP -->
+            <group id="settings" translate="label" sortOrder="10"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                
+                <label>General Settings</label>
+
+                <!-- API KEY -->
+                <field id="api_key" translate="label comment"
+                       type="obscure" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+
+                    <label>API Key</label>
+                    <comment>Enter your Groq API Key</comment>
+                </field>
+
+            </group>
+
+        </section>
+
+    </system>
+</config>
