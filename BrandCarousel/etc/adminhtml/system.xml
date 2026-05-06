@@ -1,0 +1,82 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="MageJ" translate="label" sortOrder="0">
+            <label>MageJ</label>
+        </tab>
+
+        <section id="brandcarousel" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Brand Slider</label>
+            <tab>MageJ</tab>
+            <resource>MageJ_BrandCarousel::config</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Brand Slider</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>validate-digits</validate>
+                    <comment>Select Yes to display the slider</comment>
+                </field>
+                <field id="slider_heading" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Slider Heading</label>
+                    <comment>Enter Header for slider</comment>
+                </field>
+                <field id="display_page" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Display Slider On</label>
+                    <source_model>MageJ\BrandCarousel\Model\Config\Source\DisplayPage</source_model>
+                </field>
+                <field id="display_container" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Custom Display Container</label>
+                    <comment>
+                    <![CDATA[
+                        Enter the layout container or block name where the Brand Slider should be displayed. Please refer to the README.md file for a list of commonly used layout containers. Leave it blank if you want to use it through Template or block.
+                        <div class="message message-notice">
+                            <div>
+                                <strong>Manual Usage:</strong><br>
+                            </div>
+                            Block Class:
+                            <code>MageJ\BrandCarousel\Block\Index\BrandCarousel</code><br><br>
+
+                            Template:
+                            <code>MageJ_BrandCarousel::brand-slider.phtml</code>
+                        </div>
+                    ]]></comment>
+                </field>
+
+
+            </group>
+            <group id="slider" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Slider Design Configuration</label>
+                <field id="show" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Slide to show</label>
+                    <validate>validate-digits</validate>
+                    <comment>Enter slide to show (MAX:5)</comment>
+                    <frontend_class>validate-number validate-range validate-range-max-5</frontend_class>
+                </field>
+                <field id="scroll" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Slide to scroll</label>
+                    <validate>validate-digits</validate>
+                    <comment>Enter Slide to scroll</comment>
+                </field>
+                <field id="autoplay" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Autoplay</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>validate-digits</validate>
+                    <comment>Select Yes to enable autoplay</comment>
+                </field>
+                <field id="nav" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Next/Prev buttons</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>validate-digits</validate>
+                    <comment>Select Yes to display the Next/Pre button in the slider</comment>
+                </field>
+                <field id="dots" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Dots Navigation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>validate-digits</validate>
+                    <comment>Select Yes to display dot navigation of the slider</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

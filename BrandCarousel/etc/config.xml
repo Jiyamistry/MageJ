@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/config.xsd">
+    <default>
+        <brandcarousel>
+            <general>
+                <enabled>0</enabled>
+                <slider_heading></slider_heading>
+                <display_page>home</display_page>
+                <display_container>content</display_container>
+            </general>
+            <slider>
+                <show>4</show>
+                <scroll>1</scroll>
+                <autoplay>1</autoplay>
+                <nav>0</nav>
+                <dots>0</dots>
+            </slider>
+        </brandcarousel>
+    </default>
+</config>
