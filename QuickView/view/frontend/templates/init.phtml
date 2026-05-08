@@ -1,0 +1,23 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+$qv = $block->getLayout()->getBlock('category.products.list')
+    ? $block->getLayout()->getBlock('category.products.list')->getData('quickViewViewModel')
+    : null;
+if (!$qv || !$qv->isEnabled()) {
+    return;
+}
+?>
+<script type="text/x-magento-init">
+{
+  "*": {
+    "MageJ_QuickView/js/quickview": {
+      "ajaxUrl": "<?= $escaper->escapeJs($qv->getAjaxUrl()) ?>",
+      "showAddToCart": <?= $qv->isShowAddToCartEnabled() ? 'true' : 'false' ?>
+    }
+  }
+}
+</script>
+

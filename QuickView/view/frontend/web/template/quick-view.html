@@ -1,0 +1,183 @@
+<div class="iflw-qv">
+    <!-- ko if: errorMessage() -->
+    <div class="message error">
+        <div data-bind="text: errorMessage"></div>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: isLoading() -->
+    <div class="iflw-qv-loading">
+        <div class="loading-mask">
+            <div class="loader">
+                <p data-bind="text: $t('Loading...')"></p>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: !isLoading() -->
+    <div class="iflw-qv-grid" data-bind="css: {'is-loading': isLoading()}">
+        <div class="iflw-qv-left">
+            <div class="iflw-qv-main-image">
+                <!-- ko if: activeImage() -->
+                <img data-bind="attr: {src: activeImage().url, alt: activeImage().label || name()}" />
+                <!-- /ko -->
+            </div>
+
+            <!-- ko if: galleryImages() && galleryImages().length -->
+            <div class="iflw-qv-thumbs">
+                <div class="iflw-qv-thumbs-track" data-bind="foreach: galleryImages">
+                    <button type="button"
+                            class="iflw-qv-thumb"
+                            data-bind="click: $parent.selectImage.bind($parent, $data),
+                                       css: {active: $parent.activeImage() && $parent.activeImage().url === url},
+                                       attr: {title: label || $parent.name()}">
+                        <img data-bind="attr: {src: url, alt: label || $parent.name()}" />
+                    </button>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <div class="iflw-qv-right">
+            <!-- breadcrum -->
+
+            <div class="page-title-wrapper product">
+                <h1 class="page-title">
+                    <span class="base" data-bind="html: name"></span>
+                </h1>
+            </div>
+
+            <div class="product attribute sku iflw-qv-sku">
+                <strong class="type" data-bind="text: $t('SKU')"></strong>
+                <div class="value" data-bind="text: sku"></div>
+            </div>
+
+            <div class="stock iflw-qv-stock" data-bind="css: {available: isSalable(), unavailable: !isSalable()}">
+                <span data-bind="text: isSalable() ? $t('In stock') : $t('Out of stock')"></span>
+            </div>
+
+            <!-- ko if: isSalable() -->
+
+            <div class="product-info-main">
+                    <form class="form form-configurable product-add-form"
+                          data-product-sku=""
+                          data-bind="attr: {
+                              id: formId,
+                              action: addToCart() ? addToCart().action : '#'
+                          }"
+                          method="post"
+                          data-role="tocart-form">
+
+                        <!-- ko if: isConfigurable() -->
+
+                        <div class="product-info-price iflw-qv-price">
+                            <div class="price-box price-final_price"
+                                 data-role="priceBox"
+                                 data-bind="attr: {
+                                     'data-product-id': productId(),
+                                     'data-price-box': 'product-id-' + productId()
+                                 }">
+
+                                <span class="price-container price-final_price tax weee">
+                                    <span class="price-label">As low as</span>
+
+                                    <span data-price-type="finalPrice"
+                                          class="price-wrapper"
+                                          data-price-amount="0">
+
+                                        <span class="price"></span>
+
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="product-options-wrapper">
+                            <div class="fieldset" tabindex="0">
+                                <div class="field configurable required">
+
+                                    <label class="label">
+                                        <span>Select Options</span>
+                                    </label>
+
+                                    <div class="control">
+
+                                        <div class="swatch-opt"
+                                             data-role="swatch-options"
+                                             data-bind="attr: {id: swatchContainerId}">
+                                        </div>
+
+                                        <div class="super-attribute-selects"></div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- /ko -->
+
+                        <!-- ko if: !isConfigurable() -->
+
+                        <div class="product-info-price iflw-qv-price">
+                            <div class="price-box">
+                                <span class="price-container">
+                                    <span class="price-wrapper">
+                                        <span class="price" data-bind="html: price"></span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- /ko -->
+
+                        <input type="hidden" name="form_key"
+                               data-bind="value: addToCart() ? addToCart().form_key : ''" />
+
+                        <input type="hidden" name="product"
+                               data-bind="value: addToCart() ? addToCart().product : ''" />
+
+                        <input type="hidden" name="uenc"
+                               data-bind="value: addToCart() ? addToCart().uenc : ''" />
+
+                        <input type="hidden" name="selected_configurable_option" value="" />
+
+                        <input type="hidden" name="related_product" value="" />
+
+                        <div class="product-options-bottom">
+                            <div class="box-tocart">
+                                <div class="fieldset">
+                                    <div class="field qty">
+                                        <label class="label" data-bind="attr: {for: formId() + '-qty'}">
+                                            <span data-bind="text: $t('Qty')"></span>
+                                        </label>
+                                        <div class="control">
+                                            <input type="number"
+                                                   class="input-text qty"
+                                                   name="qty"
+                                                   min="1"
+                                                   value="1"
+                                                   data-bind="attr: {id: formId() + '-qty'}" />
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <!-- ko if: showAddToCartResolved() -->
+                                            <button type="submit" class="action primary tocart">
+                                                <span data-bind="text: $t('Add to Cart')"></span>
+                                            </button>
+                                        <!-- /ko -->
+                                        <a class="action secondary iflw-qv-view"
+                                           data-bind="attr: {href: productUrl}, text: $t('View Details')"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
+</div>
+

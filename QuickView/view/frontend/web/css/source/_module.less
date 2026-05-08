@@ -1,0 +1,136 @@
+//
+// MageJ QuickView styles
+// _____________________________________________
+
+.actions-secondary {
+    .action.quickview {
+        position: relative;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        margin-left: 8px;
+        color: #666;
+        text-decoration: none;
+        line-height: 1;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-color: currentColor;
+
+            -webkit-mask-image: url('@{baseDir}MageJ_QuickView/images/eye.svg');
+            mask-image: url('@{baseDir}MageJ_QuickView/images/eye.svg');
+
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+
+            -webkit-mask-position: center;
+            mask-position: center;
+
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+
+        &:hover {
+            color: #333;
+        }
+    }
+}
+
+#iflw-quickview-modal.page-layout-2columns-left .product-info-main,
+#iflw-quickview-modal .product-info-main {
+    width: 100% !important;
+}
+
+.iflw-quickview-popup {
+    .modal-inner-wrap {
+        max-width: 1200px;
+        width: 92%;
+    }
+}
+
+.iflw-qv {
+    padding: 0;
+
+    .iflw-qv-grid {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+    }
+
+    .iflw-qv-left,
+    .iflw-qv-right {
+        width: 50%;
+    }
+
+    .iflw-qv-main-image {
+        border: 1px solid @border-color__base;
+        background: @color-white;
+        padding: 10px;
+        min-height: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            max-width: 70%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    .iflw-qv-thumbs {
+        margin-top: 12px;
+        overflow-x: auto;
+
+        .iflw-qv-thumbs-track {
+            display: flex;
+            gap: 10px;
+        }
+
+        .iflw-qv-thumb {
+            border: 1px solid @border-color__base;
+            padding: 0;
+            background: @color-white;
+            width: 62px;
+            height: 62px;
+            flex: 0 0 auto;
+            cursor: pointer;
+
+            &.active {
+                border-color: @link__hover__color;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+        }
+    }
+
+    .iflw-qv-price {
+        margin: 8px 0 16px;
+        font-size: xx-large;
+    }
+
+    .iflw-qv-sku,
+    .iflw-qv-stock {
+        margin-bottom: 10px;
+        font-size: large;
+    }
+
+    @media (max-width: 768px) {
+        .iflw-qv-grid {
+            flex-direction: column;
+        }
+
+        .iflw-qv-left,
+        .iflw-qv-right {
+            width: 100%;
+        }
+    }
+}
