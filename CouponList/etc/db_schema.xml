@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="salesrule" resource="default" engine="innodb">
+        <column xsi:type="smallint" name="is_visible_in_list" nullable="false" comment="Is Visible in Coupon Listing"/>
+    </table>
+</schema>
